@@ -14,7 +14,7 @@ public class BusinessAccount extends BankAccount implements OnlineService, LoanS
     }
 
     @Override
-    public void transferFunds() {
+    public void transferFunds(double amount, String destinationAccount) {
         System.out.println("BusinessAccount: Transferring funds...");
     }
 

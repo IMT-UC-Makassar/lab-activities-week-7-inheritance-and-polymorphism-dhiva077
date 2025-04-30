@@ -12,7 +12,7 @@ public class CheckingAccount extends BankAccount implements OnlineService {
     }
 
     @Override
-    public void transferFunds() {
+    public void transferFunds(double amount, String destinationAccount) {
         System.out.println("CheckingAccount: Transferring funds...");
     }
 
