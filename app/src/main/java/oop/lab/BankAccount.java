@@ -20,10 +20,11 @@ public abstract class BankAccount {
         if (amount > balance) throw new IllegalArgumentException("Insufficient funds");
         balance -= amount;
     }
-    
+
     public abstract double calculateInterest();
-    
-    // Getter dan method dasar lainnya
+
+    public abstract void transferFunds();
+
     public double getBalance() {
         return balance;
     }

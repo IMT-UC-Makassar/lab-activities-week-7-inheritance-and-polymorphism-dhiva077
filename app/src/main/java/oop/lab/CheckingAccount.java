@@ -1,6 +1,6 @@
 package oop.lab;
 
-public class CheckingAccount extends BankAccount implements OnlineService {
+public class CheckingAccount extends BankAccount {
 
     public CheckingAccount(String accountNumber, String accountHolder, double balance) {
         super(accountNumber, accountHolder, balance);
@@ -12,12 +12,17 @@ public class CheckingAccount extends BankAccount implements OnlineService {
     }
 
     @Override
-    public void transferFunds(double amount, String destinationAccount) {
+    public void transferFunds() {
         System.out.println("CheckingAccount: Transferring funds...");
     }
 
-    @Override
+    
     public void payBills(double amount) {
-        balance -= amount;
+        if (amount <= balance) {
+            balance -= amount;
+            System.out.println("Paying bills: " + amount + " has been deducted from your account.");
+        } else {
+            System.out.println("Insufficient funds to pay bills.");
+        }
     }
 }

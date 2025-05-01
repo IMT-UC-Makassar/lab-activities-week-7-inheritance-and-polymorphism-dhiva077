@@ -1,8 +1,6 @@
 package oop.lab;
 
-public class BusinessAccount extends BankAccount implements OnlineService, LoanService {
-
-    private String loanStatus = "None";
+public class BusinessAccount extends BankAccount {
 
     public BusinessAccount(String accountNumber, String accountHolder, double balance) {
         super(accountNumber, accountHolder, balance);
@@ -14,22 +12,19 @@ public class BusinessAccount extends BankAccount implements OnlineService, LoanS
     }
 
     @Override
-    public void transferFunds(double amount, String destinationAccount) {
+    public void transferFunds() {
         System.out.println("BusinessAccount: Transferring funds...");
     }
 
-    @Override
-    public void payBills(double amount) {
-        balance -= amount;
-    }
-
-    @Override
+    // Menambahkan metode applyForLoan
     public void applyForLoan(double amount) {
-        loanStatus = "Pending";
+        System.out.println("BusinessAccount: Applying for a loan of " + amount);
+        // Implementasi logika pengajuan pinjaman
     }
 
-    @Override
+    // Menambahkan metode checkLoanStatus
     public String checkLoanStatus() {
-        return loanStatus;
+        // Mengembalikan status pinjaman
+        return "BusinessAccount: Loan status is pending.";
     }
 }
