@@ -7,21 +7,20 @@ public class SavingsAccount extends BankAccount implements OnlineService {
     }
 
     @Override
-    public double calculateInterest() {
-        return balance * 0.03;
-    }
-
-    @Override
-    public void transferFunds() {
-        System.out.println("SavingsAccount: Transferring funds...");
+    public void calculateInterest() {
+        deposit(balance * 0.03);
     }
 
     public void transferFunds(double amount, String destinationAccount) {
-        System.out.println("SavingsAccount: Transferring " + amount + " to " + destinationAccount);
+        withdraw(amount);
     }
 
-    @Override
     public void payBills(double amount) {
-        balance -= amount;
+        if (amount <= balance) {
+            balance -= amount;
+            System.out.println("Paying bills: " + amount + " has been deducted from your account.");
+        } else {
+            System.out.println("Insufficient funds to pay bills.");
+        }
     }
 }

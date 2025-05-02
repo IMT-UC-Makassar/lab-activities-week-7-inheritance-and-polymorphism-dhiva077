@@ -1,19 +1,18 @@
 package oop.lab;
 
-public class BusinessAccount extends BankAccount {
+public class BusinessAccount extends BankAccount implements OnlineService, LoanService {
 
     public BusinessAccount(String accountNumber, String accountHolder, double balance) {
         super(accountNumber, accountHolder, balance);
     }
 
     @Override
-    public double calculateInterest() {
-        return balance * 0.05;
+    public void calculateInterest() {
+        deposit(balance * 0.05);
     }
 
-    @Override
-    public void transferFunds() {
-        System.out.println("BusinessAccount: Transferring funds...");
+    public void transferFunds(double amount, String destinationAccount) {
+        withdraw(amount);
     }
 
     // Menambahkan metode applyForLoan
@@ -25,6 +24,15 @@ public class BusinessAccount extends BankAccount {
     // Menambahkan metode checkLoanStatus
     public String checkLoanStatus() {
         // Mengembalikan status pinjaman
-        return "BusinessAccount: Loan status is pending.";
+        return "Pending";
+    }
+
+    public void payBills(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            System.out.println("Paying bills: " + amount + " has been deducted from your account.");
+        } else {
+            System.out.println("Insufficient funds to pay bills.");
+        }
     }
 }

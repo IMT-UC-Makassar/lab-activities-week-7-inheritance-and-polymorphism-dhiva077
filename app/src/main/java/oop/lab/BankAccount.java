@@ -21,9 +21,7 @@ public abstract class BankAccount {
         balance -= amount;
     }
 
-    public abstract double calculateInterest();
-
-    public abstract void transferFunds();
+    public abstract void calculateInterest();
 
     public double getBalance() {
         return balance;
